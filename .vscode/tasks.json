@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "just build",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "flash",
+      "type": "shell",
+      "command": "just flash"
+    },
+    {
+      "label": "monitor",
+      "type": "shell",
+      "command": "just monitor"
+    }
+  ]
+}

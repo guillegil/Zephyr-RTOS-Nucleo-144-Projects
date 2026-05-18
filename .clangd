@@ -1,0 +1,17 @@
+CompileFlags:
+  Remove:
+    - -fno-printf-return-value
+    - -fno-reorder-functions
+    - -mfp16-format=*
+    - -fno-defer-pop
+    - --param=*
+    - -fno-freestanding
+    - -fno-pic
+    - -fno-pie
+  Add:
+    - -ferror-limit=0
+
+Diagnostics:
+  UnusedIncludes: None
+  Suppress:
+    - unused-includes

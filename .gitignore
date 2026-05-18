@@ -1,0 +1,63 @@
+# ---------- Build artifacts ----------
+build/
+build-*/
+out/
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+*.signed.*
+
+# ---------- CMake ----------
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakeUserPresets.json
+compile_commands.json
+
+# ---------- VSCode ----------
+# Track shared configs; ignore everything else.
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ---------- Other IDEs ----------
+.idea/
+
+# ---------- clangd / ccls ----------
+.cache/
+.ccls-cache/
+compile_flags.txt
+
+# ---------- Personal overrides ----------
+*.local.conf
+*.local.overlay
+prj.local.conf
+.envrc
+.envrc.local
+
+# ---------- Python (defensive) ----------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# ---------- Twister ----------
+twister-out/
+twister-out.*/
+
+# ---------- OS noise ----------
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ---------- Logs / dumps ----------
+*.log
+core
+core.*
+*.coredump

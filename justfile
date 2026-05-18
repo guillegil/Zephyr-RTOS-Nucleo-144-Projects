@@ -35,6 +35,15 @@ info:
     @echo "SDK            : $ZEPHYR_SDK_INSTALL_DIR"
     @echo "Board          : {{board}}"
 
+
+new name:
+    @if [ -d "apps/{{name}}" ]; then echo "apps/{{name}} already exists"; exit 1; fi
+    @mkdir -p apps/{{name}}/src
+    @printf 'cmake_minimum_required(VERSION 3.20.0)\nfind_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})\nproject({{name}})\n\ntarget_sources(app PRIVATE src/main.c)\n' > apps/{{name}}/CMakeLists.txt
+    @printf '# Kconfig overrides for {{name}}\n' > apps/{{name}}/prj.conf
+    @printf '#include <zephyr/kernel.h>\n#include <zephyr/sys/printk.h>\n\nint main(void)\n{\n\tprintk("Hello from {{name}} on %%s!\\n", CONFIG_BOARD);\n\treturn 0;\n}\n' > apps/{{name}}/src/main.c
+    @echo "Created apps/{{name}} — build with: just build {{name}}"
+
 # Build an app: `just build` or `just build blinky nucleo_f767zi`
 build app=app board=board:
     west build -p auto -b {{board}} -d apps/{{app}}/build apps/{{app}}
